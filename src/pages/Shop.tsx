@@ -10,6 +10,7 @@ interface ShopProps {
 const Shop = ({ onAddToCart }: ShopProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const selectedCategory = searchParams.get('category') || 'products'
+  const searchTerm = (searchParams.get('search') || '').toLowerCase().trim()
   const [sortBy, setSortBy] = useState('featured')
 
   const filteredProducts = useMemo(() => {
@@ -18,7 +19,13 @@ const Shop = ({ onAddToCart }: ShopProps) => {
         ? products
         : products.filter((product) => product.category === selectedCategory)
 
-    return [...scopedProducts].sort((a, b) => {
+    const searchedProducts = searchTerm
+      ? scopedProducts.filter((product) =>
+          `${product.name} ${product.description ?? ''}`.toLowerCase().includes(searchTerm),
+        )
+      : scopedProducts
+
+    return [...searchedProducts].sort((a, b) => {
       switch (sortBy) {
         case 'price-low':
           return a.price - b.price
@@ -35,7 +42,15 @@ const Shop = ({ onAddToCart }: ShopProps) => {
   }, [selectedCategory, sortBy])
 
   const handleCategoryClick = (slug: string) => {
-    setSearchParams({ category: slug })
+    const next = new URLSearchParams(searchParams)
+    next.set('category', slug)
+    setSearchParams(next)
+  }
+
+  const handleClearSearch = () => {
+    const next = new URLSearchParams(searchParams)
+    next.delete('search')
+    setSearchParams(next)
   }
 
   return (
@@ -101,9 +116,20 @@ const Shop = ({ onAddToCart }: ShopProps) => {
               </select>
             </div>
 
-            <p className="text-sm text-brand-gray mb-6">
-              {filteredProducts.length} products
-            </p>
+            <div className="flex items-center justify-between mb-6 gap-4">
+              <p className="text-sm text-brand-gray">
+                {filteredProducts.length} products
+                {searchTerm ? ` matching “${searchTerm}”` : ''}
+              </p>
+              {searchTerm && (
+                <button
+                  onClick={handleClearSearch}
+                  className="text-sm text-brand-blue underline hover:text-brand-blue/70 transition-colors"
+                >
+                  Clear search
+                </button>
+              )}
+            </div>
 
             {/* Product Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
