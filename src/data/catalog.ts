@@ -1,0 +1,205 @@
+export interface Product {
+  id: string
+  name: string
+  price: number
+  image: string
+  category: string
+  inStock: boolean
+  description?: string
+  grind?: string
+  caffeineLevel?: string
+}
+
+export interface Category {
+  slug: string
+  name: string
+}
+
+export const categories: Category[] = [
+  { slug: 'products', name: 'All Products' },
+  { slug: 'coffee', name: 'Coffee' },
+  { slug: 'matcha-tea', name: 'Matcha & Tea' },
+  { slug: 'syrups', name: 'Syrups' },
+  { slug: 'drinkware', name: 'Drinkware' },
+  { slug: 'brew-tools', name: 'Brew Tools' },
+  { slug: 'merch', name: 'Merch' },
+  { slug: 'gift-cards', name: 'Gift Cards' },
+  { slug: 'subscriptions', name: 'Subscriptions' },
+]
+
+export const products: Product[] = [
+  {
+    id: 'single-origin-espresso',
+    name: 'Single Origin Espresso',
+    price: 24,
+    category: 'coffee',
+    inStock: true,
+    grind: 'Whole Bean',
+    caffeineLevel: 'High',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80',
+    description: 'Rich caramel body with bright citrus notes sourced from Guatemala.',
+  },
+  {
+    id: 'melbourne-house-blend',
+    name: 'Melbourne House Blend',
+    price: 22,
+    category: 'coffee',
+    inStock: true,
+    grind: 'Whole Bean',
+    caffeineLevel: 'Medium',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80',
+    description: 'Our signature blend roasted for balanced sweetness and chocolatey depth.',
+  },
+  {
+    id: 'cold-brew-concentrate',
+    name: 'Cold Brew Concentrate',
+    price: 18,
+    category: 'coffee',
+    inStock: true,
+    grind: 'Cold Brew',
+    caffeineLevel: 'High',
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80',
+    description: 'Slow-steeped concentrate ready to dilute for perfect iced coffee at home.',
+  },
+  {
+    id: 'ceremonial-matcha-tin',
+    name: 'Ceremonial Matcha Tin',
+    price: 32,
+    category: 'matcha-tea',
+    inStock: true,
+    caffeineLevel: 'Medium',
+    image: 'https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=800&q=80',
+    description: 'Shade-grown matcha sourced from Uji, Japan with a smooth creamy finish.',
+  },
+  {
+    id: 'sparkling-yuzu-tea',
+    name: 'Sparkling Yuzu Tea',
+    price: 16,
+    category: 'matcha-tea',
+    inStock: true,
+    caffeineLevel: 'Low',
+    image: 'https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?auto=format&fit=crop&w=800&q=80',
+    description: 'A refreshing sparkling tea with bright citrus and delicate sweetness.',
+  },
+  {
+    id: 'mini-syrup-trio',
+    name: 'Mini Syrup Trio',
+    price: 18,
+    category: 'syrups',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=800&q=80',
+    description: 'Vanilla, caramel, and lavender handcrafted syrups for customizing drinks.',
+  },
+  {
+    id: 'lavender-syrup',
+    name: 'Lavender House Syrup',
+    price: 12.5,
+    category: 'syrups',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1505281036624-fac2862357ff?auto=format&fit=crop&w=800&q=80',
+    description: 'Floral syrup crafted in small batches to elevate lattes and iced teas.',
+  },
+  {
+    id: 'vanilla-bean-syrup',
+    name: 'Vanilla Bean Syrup',
+    price: 12.5,
+    category: 'syrups',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80',
+    description: 'Classic vanilla syrup infused with Madagascar beans for cocktails or coffee.',
+  },
+  {
+    id: 'glass-tumbler',
+    name: 'Glass Tumbler',
+    price: 28,
+    category: 'drinkware',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80',
+    description: 'Double-walled glass tumbler that keeps iced drinks cold without condensation.',
+  },
+  {
+    id: 'stoneware-diner-mug',
+    name: 'Stoneware Diner Mug',
+    price: 14,
+    category: 'drinkware',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=800&q=80',
+    description: 'Hefty mug with a vintage silhouette—perfect for everyday mornings.',
+  },
+  {
+    id: 'cold-brew-bottle',
+    name: 'Cold Brew Bottle',
+    price: 30,
+    category: 'drinkware',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1559050019-28ae0c1dfd20?auto=format&fit=crop&w=800&q=80',
+    description: 'Borosilicate bottle with mesh filter for brewing smooth cold brew at home.',
+  },
+  {
+    id: 'travel-press-kit',
+    name: 'Travel Press Kit',
+    price: 42,
+    category: 'brew-tools',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=800&q=80',
+    description: 'Compact press and canister set to brew specialty coffee wherever you go.',
+  },
+  {
+    id: 'milk-frother',
+    name: 'Rechargeable Milk Frother',
+    price: 25,
+    category: 'brew-tools',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+    description: 'Create café-quality microfoam at home with three speed settings.',
+  },
+  {
+    id: 'pour-over-stand',
+    name: 'Walnut Pour Over Stand',
+    price: 65,
+    category: 'brew-tools',
+    inStock: false,
+    image: 'https://images.unsplash.com/photo-1547496614-72f8570f95c5?auto=format&fit=crop&w=800&q=80',
+    description: 'Architectural walnut stand that turns pour-over brewing into a ritual.',
+  },
+  {
+    id: 'canvas-tote',
+    name: 'BéƠi Canvas Tote',
+    price: 22,
+    category: 'merch',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd1?auto=format&fit=crop&w=800&q=80',
+    description: 'Heavyweight tote with BéƠi branding—built to carry beans and books alike.',
+  },
+  {
+    id: 'signature-crewneck',
+    name: 'Signature Crewneck',
+    price: 48,
+    category: 'merch',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80',
+    description: 'Ultra-soft loopback crewneck with tone-on-tone embroidery.',
+  },
+  {
+    id: 'digital-gift-card',
+    name: 'Digital Gift Card',
+    price: 50,
+    category: 'gift-cards',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?auto=format&fit=crop&w=800&q=80',
+    description: 'Send a BéƠi surprise straight to their inbox—redeemable in-store or online.',
+  },
+  {
+    id: 'monthly-subscription',
+    name: 'Monthly Coffee Subscription',
+    price: 30,
+    category: 'subscriptions',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
+    description: 'Fresh roasted beans delivered monthly with rotating single origins.',
+  },
+]
+
+export const featuredProducts = products.slice(0, 4)
+
+
