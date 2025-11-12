@@ -122,11 +122,10 @@ const Header = ({
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed left-0 top-0 bottom-0 w-80 bg-white z-50 shadow-xl lg:hidden border-r border-brand-gray/20"
             >
-              <div className="p-4 border-b border-brand-gray/30 flex items-center justify-between text-brand-blue">
-                <span className="font-semibold">Menu</span>
+              <div className="p-4 border-b border-brand-gray/30 flex items-center justify-end">
                 <button
                   onClick={onCloseSidebar}
-                  className="p-2 hover:text-brand-blue/70"
+                  className="p-2 text-brand-blue hover:text-brand-blue/70 transition-colors"
                   aria-label="Close menu"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
