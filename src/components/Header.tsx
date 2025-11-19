@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 interface HeaderProps {
   onCartClick: () => void
@@ -18,6 +19,7 @@ const Header = ({
   isSidebarOpen,
   onCloseSidebar,
 }: HeaderProps) => {
+  const [isSpecialtyHovered, setIsSpecialtyHovered] = useState(false)
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-brand-gray/30">
       {/* Announcement Bar */}
@@ -60,6 +62,41 @@ const Header = ({
             <Link to="/shop" className="text-sm font-medium text-neutral-700 hover:text-brand-blue transition-colors">
               Shop
             </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsSpecialtyHovered(true)}
+              onMouseLeave={() => setIsSpecialtyHovered(false)}
+            >
+              <button className="text-sm font-medium text-neutral-700 hover:text-brand-blue transition-colors flex items-center gap-1">
+                Specialty
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <AnimatePresence>
+                {isSpecialtyHovered && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                  >
+                    <Link
+                      to="/chocolate"
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-brand-blue/10 hover:text-brand-blue transition-colors"
+                    >
+                      Chocolate
+                    </Link>
+                    <Link
+                      to="/perfume"
+                      className="block px-4 py-2 text-sm text-neutral-700 hover:bg-brand-blue/10 hover:text-brand-blue transition-colors"
+                    >
+                      Perfume
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <Link to="/about" className="text-sm font-medium text-neutral-700 hover:text-brand-blue transition-colors">
               About Us
             </Link>
@@ -148,6 +185,25 @@ const Header = ({
                 >
                   Shop
                 </Link>
+                <div className="py-2">
+                  <span className="text-sm font-semibold block mb-2">Specialty</span>
+                  <div className="pl-4 space-y-1">
+                    <Link
+                      to="/chocolate"
+                      onClick={onCloseSidebar}
+                      className="block py-1 text-sm hover:text-brand-blue/70 transition-colors"
+                    >
+                      Chocolate
+                    </Link>
+                    <Link
+                      to="/perfume"
+                      onClick={onCloseSidebar}
+                      className="block py-1 text-sm hover:text-brand-blue/70 transition-colors"
+                    >
+                      Perfume
+                    </Link>
+                  </div>
+                </div>
                 <Link
                   to="/about"
                   onClick={onCloseSidebar}

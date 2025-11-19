@@ -23,6 +23,8 @@ export const categories: Category[] = [
   { slug: 'drinkware', name: 'Drinkware' },
   { slug: 'brew-tools', name: 'Brew Tools' },
   { slug: 'merch', name: 'Merch' },
+  { slug: 'chocolate', name: 'Chocolate' },
+  { slug: 'perfume', name: 'Perfume' },
   { slug: 'gift-cards', name: 'Gift Cards' },
   { slug: 'subscriptions', name: 'Subscriptions' },
 ]
@@ -198,8 +200,63 @@ export const products: Product[] = [
     image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
     description: 'Fresh roasted beans delivered monthly with rotating single origins.',
   },
+  {
+    id: 'dark-chocolate-bar',
+    name: 'Dark Chocolate Bar (70% Cacao)',
+    price: 16,
+    category: 'chocolate',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1606312619070-d48b4cbc6b3c?auto=format&fit=crop&w=800&q=80',
+    description: 'Rich dark chocolate made with single-origin cacao, perfect for pairing with espresso.',
+  },
+  {
+    id: 'coffee-truffles',
+    name: 'Coffee-Infused Truffles',
+    price: 24,
+    category: 'chocolate',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80',
+    description: 'Handcrafted truffles infused with our signature espresso blend, dusted with cocoa powder.',
+  },
+  {
+    id: 'chocolate-gift-box',
+    name: 'Artisan Chocolate Gift Box',
+    price: 45,
+    category: 'chocolate',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=800&q=80',
+    description: 'Curated selection of our finest chocolates, beautifully packaged for gifting.',
+  },
+  {
+    id: 'espresso-perfume',
+    name: 'Espresso Notes Eau de Parfum',
+    price: 68,
+    category: 'perfume',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80',
+    description: 'A warm, inviting fragrance with notes of roasted coffee beans, vanilla, and caramel.',
+  },
+  {
+    id: 'cafe-au-lait-perfume',
+    name: 'Café au Lait Perfume',
+    price: 65,
+    category: 'perfume',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80',
+    description: 'Creamy and comforting with notes of steamed milk, hazelnut, and a hint of citrus.',
+  },
+  {
+    id: 'roastery-perfume',
+    name: 'Roastery Collection Perfume',
+    price: 72,
+    category: 'perfume',
+    inStock: true,
+    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=80',
+    description: 'Inspired by the rich aromas of our roastery—smoky, earthy, with warm spice undertones.',
+  },
 ]
 
 export const featuredProducts = products.slice(0, 4)
+
 
 

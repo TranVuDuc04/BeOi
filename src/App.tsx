@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ProductsPage from './pages/ProductsPage'
 import About from './pages/About'
+import Chocolate from './pages/Chocolate'
+import Perfume from './pages/Perfume'
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -46,6 +48,14 @@ function App() {
             <Route
               path="/about"
               element={<About />}
+            />
+            <Route
+              path="/chocolate"
+              element={<Chocolate />}
+            />
+            <Route
+              path="/perfume"
+              element={<Perfume />}
             />
             <Route
               path="/collections/:category"
