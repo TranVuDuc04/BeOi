@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -6,52 +6,71 @@ const perfumes = [
   {
     id: 1,
     name: 'White Rice',
-    description: 'A homage to Vietnam's staple grain, jasmine rice. This perfume blends a mild sweetness with the soft, nutty character of rice, reflecting the quiet resilience and cultural heart of Vietnamese life.',
+    description: "A tribute to Vietnam's cultural symbol of livelihood - the white jasmine rice. This scent presents a subtly sweet aroma, harmonizing gentle softness with the rice grain's nuttiness. Embrace the heart of Vietnamese culture, where humble beginnings flourish into enduring strength.",
+    image: '/perfume-images/perfume1.webp',
   },
   {
     id: 2,
     name: 'Monsoon Tea',
-    description: 'Monsoon Tea evokes the calm of enjoying Vietnamese green tea after a passing downpour. Light, clean, and refreshing, it captures that post-rain clarity — each spray feels like a fresh, uplifting sip.',
+    description: 'Monsoon Tea captures the tranquil moment of savoring Vietnamese green tea after a rainstorm. Brewed with fresh tea leaves, this traditional drink is light, bright, and refreshing. As the rain subsides, every spray of Monsoon Tea is a sip of optimism, clarity, and renewal.',
+    image: '/perfume-images/perfume2.webp',
   },
   {
     id: 3,
     name: 'In The Garden',
-    description: 'In The Garden draws from the founder's childhood moments in his grandmother's rural garden. Lime trees, jasmine, and local greenery come together to recreate those warm, nostalgic days spent outdoors.',
+    description: "In The Garden pays tribute to rural Vietnamese garden, inspired by fond memories of our founder's visits to his grandmother. Those were the childhood days spent playing in the garden, embraced by scents of lime trees, elegant jasmine, and native flora.",
+    image: '/perfume-images/perfume3.webp',
   },
   {
     id: 4,
     name: 'Harvest Season',
-    description: 'Harvest Season EDP reflects the charm of Vietnam's countryside during rice harvest time. Picture yourself strolling among golden straw fields, sunlight above and the warm scent of drying grain surrounding you.',
+    description: "Harvest Season EDP embodies the enchanting spirit of Vietnam's countryside during the rice harvest season. Imagine walking along these rustic lanes, immersed in fields of golden straw. The sun shines brightly overhead as aroma of drying straw fills your senses.",
+    image: '/perfume-images/perfume4.webp',
   },
   {
     id: 5,
     name: 'Phu Quoc',
-    description: 'This scent celebrates the island of Phu Quoc in southern Vietnam. It opens with a fresh coastal feel, then layers in green peppercorn and local woods to deliver a distinctive regional twist.',
+    description: 'Phu Quoc EDP pays tribute to the captivating island of Phu Quoc, located off the southern coast of Vietnam. Beyond a fresh marine scent, Phu Quoc EDP presents its unique character by infusing a distinctive local twist with essence of green peppercorn and native woods.',
+    image: '/perfume-images/perfume5.webp',
   },
   {
     id: 6,
     name: 'Da Lat',
-    description: 'Da Lat EDP is inspired by the romantic, tranquil atmosphere of Da Lat. At its heart is a modern rose composition that unfolds gently, like a tender message filled with affection and intrigue.',
+    description: 'Da Lat EDP pays homage to the charming city of Da Lat, a haven of romance and serenity in central Vietnam. At its core, Da Lat EDP is an innovative rose scent that unfolds like a love letter, where every spray carries the promise of romance and surprise.',
+    image: '/perfume-images/perfume6.webp',
   },
   {
     id: 7,
     name: 'Pho Breakfast',
-    description: 'Pho Breakfast takes cues from Vietnam's beloved noodle soup. It brings together the aromatic spices, herbs, and warm notes that define the dish — not as a literal replica, but as a fragrant, flavorful impression.',
+    description: "Pho Breakfast is inspired by pho, Vietnam's national dish. This fragrance mirrors the dish's main ingredients, echoes the warmth of spice blend, and weaves in hints of fresh herbs. While not a literal translation, Pho Breakfast invites you to savour its symphony of aromas and tastes.",
+    image: '/perfume-images/perfume7.webp',
   },
   {
     id: 8,
     name: 'Through The Forest',
-    description: 'Through The Forest retells the journeys of Vietnamese men seeking precious oud in the deep jungle. The fragrance draws you into the forest with its captivating oud presence, celebrating adventure and nature's hidden wonders.',
+    description: "Through The Forest tells the story of Vietnamese men venturing deep into the forest in search of prized oud. This fragrance transports you into Vietnam's jungle as alluring scents of oud beckons. It's an ode to exploration, reverence, and the treasures hidden within nature's embrace.",
+    image: '/perfume-images/perfume8.webp',
   },
   {
     id: 9,
     name: 'Vietnamese Coffee',
-    description: 'This EDP honors Vietnam's signature iced coffee made from robust, dark-roasted Robusta beans. Rich, bitter, and caramel-like, it captures the bold flavor balanced by creamy condensed milk — an energizing morning classic.',
+    description: "Vietnamese Coffee EDP honors Vietnam's iconic drink, crafted from dark-roasted Robusta beans, which exude a bold, caramel-chocolate richness and a pronounced bitterness that perfectly complements condensed milk. Topped with ice, it is the perfect drink to start the day.",
+    image: '/perfume-images/perfume9.webp',
   },
 ]
 
 const Perfume = () => {
-  const [selectedPerfume, setSelectedPerfume] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const nextPerfume = () => {
+    setCurrentIndex((prev) => (prev + 1) % perfumes.length)
+  }
+
+  const prevPerfume = () => {
+    setCurrentIndex((prev) => (prev - 1 + perfumes.length) % perfumes.length)
+  }
+
+  const currentPerfume = perfumes[currentIndex]
 
   return (
     <div className="min-h-screen bg-[#f5f5f0]">
@@ -64,11 +83,11 @@ const Perfume = () => {
           className="max-w-4xl mx-auto text-center mb-16"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-brand-blue font-display">
-            Our Perfume Collection
+            Our d'Annam Perfume Collection
           </h1>
         </motion.div>
 
-        {/* Story Section */}
+        {/* Story Section - Letter from Founder */}
         <div className="max-w-4xl mx-auto mb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -76,78 +95,110 @@ const Perfume = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white rounded-lg shadow-sm p-8 md:p-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-brand-blue">Dear reader,</h2>
-            <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
-              <p>
-                As a child growing up in rural Vietnam, the founder was captivated by the symphony of scents that painted the landscapes. The lotus blossoms that graced the serene lakes, the crisp scent of morning dew on verdant rice paddies, the bitterness of lime leaves in his grandmother's garden - each scent was a thread in the tapestry of memories.
-              </p>
-              <p>
-                As the journey led outside Vietnam, it became clear that while the world of fragrances was vast and diverse, it was missing a heart note - the scent of homeland. Thus came the idea for the first collection.
-              </p>
-              <p>
-                This collection is a love letter to Vietnam. Each of the 9 fragrances is a personal and contemporary interpretation of heritage, hand-crafted by local perfumers to echo the melodies of the land.
-              </p>
-              <p>
-                This is a manifestation of a dream, a sensory memoir of Vietnam.
-              </p>
-              <p>
-                Let the journey begin.
-              </p>
-            </div>
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="font-semibold text-brand-blue">Nick Hoang</p>
-              <p className="text-sm text-gray-600">Founder</p>
-              <p className="text-sm text-gray-600">BéƠi</p>
-            </div>
+            <img
+              src="/perfume-images/perfume_founder.png"
+              alt="A letter from the perfume founder"
+              className="w-full h-auto rounded-lg"
+            />
           </motion.div>
         </div>
 
-        {/* Perfume Carousel/Grid */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {perfumes.map((perfume, index) => (
+        {/* Perfume Display - Split Layout (like d'Annam reference) */}
+        <div className="max-w-7xl mx-auto mb-16">
+          <AnimatePresence mode="wait">
+            <div key={currentIndex} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[600px]">
+              {/* Left Side - Text Content */}
               <motion.div
-                key={perfume.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => setSelectedPerfume(index)}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6 px-4 lg:px-8"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-sm text-brand-blue font-medium">
-                    {index + 1}/9
-                  </span>
-                  {selectedPerfume === index && (
-                    <span className="text-xs bg-brand-yellow text-brand-blue px-2 py-1 rounded-full">
-                      Selected
-                    </span>
-                  )}
+                <div className="text-sm text-brand-blue font-medium mb-4">
+                  {currentIndex + 1}/9
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-brand-blue">{perfume.name}</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">{perfume.description}</p>
+                <h2 className="text-4xl md:text-5xl font-bold text-brand-blue font-display">
+                  {currentPerfume.name}
+                </h2>
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                  {currentPerfume.description}
+                </p>
+                
+                {/* Navigation Arrows */}
+                <div className="flex items-center gap-4 pt-8">
+                  <button
+                    onClick={prevPerfume}
+                    className="p-3 rounded-full border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-brand-yellow transition-colors"
+                    aria-label="Previous perfume"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={nextPerfume}
+                    className="p-3 rounded-full border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-brand-yellow transition-colors"
+                    aria-label="Next perfume"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  <span className="text-sm text-gray-600 ml-4">
+                    Navigate through the collection
+                  </span>
+                </div>
               </motion.div>
+
+              {/* Right Side - Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.5 }}
+                className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden bg-gradient-to-br from-yellow-50 via-blue-50 to-white"
+              >
+                <img
+                  src={currentPerfume.image}
+                  alt={currentPerfume.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              </motion.div>
+            </div>
+          </AnimatePresence>
+        </div>
+
+        {/* Perfume Thumbnails Grid */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <h3 className="text-2xl font-bold text-brand-blue mb-8 text-center">Browse All Perfumes</h3>
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4">
+            {perfumes.map((perfume, index) => (
+              <button
+                key={perfume.id}
+                onClick={() => setCurrentIndex(index)}
+                className={`relative aspect-square rounded-lg overflow-hidden transition-all ${
+                  currentIndex === index
+                    ? 'ring-4 ring-brand-blue scale-105'
+                    : 'opacity-60 hover:opacity-100 hover:scale-105'
+                }`}
+              >
+                <img
+                  src={perfume.image}
+                  alt={perfume.name}
+                  className="w-full h-full object-cover"
+                />
+                {currentIndex === index && (
+                  <div className="absolute inset-0 bg-brand-blue/20" />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 text-center">
+                  {index + 1}/9
+                </div>
+              </button>
             ))}
           </div>
         </div>
-
-        {/* Selected Perfume Detail */}
-        {selectedPerfume !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="max-w-4xl mx-auto mb-12"
-          >
-            <div className="bg-white rounded-lg shadow-sm p-8 md:p-12 text-center">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 text-brand-blue">
-                {perfumes[selectedPerfume].name}
-              </h3>
-              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                {perfumes[selectedPerfume].description}
-              </p>
-            </div>
-          </motion.div>
-        )}
 
         {/* CTA Section */}
         <motion.div

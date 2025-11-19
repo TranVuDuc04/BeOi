@@ -51,7 +51,7 @@ function App() {
             />
             <Route
               path="/chocolate"
-              element={<Chocolate />}
+              element={<Chocolate onAddToCart={() => setCartCount(prev => prev + 1)} />}
             />
             <Route
               path="/perfume"
