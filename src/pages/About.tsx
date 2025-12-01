@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Timeline from '../components/Timeline'
 
 const location = {
   name: 'BéƠi Cafe',
@@ -99,6 +100,9 @@ const About = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Timeline */}
+      <Timeline />
 
       {/* About Story */}
       <section className="bg-white border-t border-brand-gray/30">
