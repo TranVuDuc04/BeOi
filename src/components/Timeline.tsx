@@ -32,7 +32,11 @@ const timelineData: TimelineItem[] = [
   {
     title: 'Growing Forward',
     description: "But those challenges shaped the final result. Each photo and video you'll see tells part of that story: the hard work, the pressure, and the excitement of bringing a new coffee shop to life.",
-    media: [],
+    media: [
+      { src: '/timeline/p3.1.jpeg', type: 'image', alt: 'Growing Forward' },
+      { src: '/timeline/p3.2.jpeg', type: 'image', alt: 'Growing Forward' },
+      { src: '/timeline/p3.3.jpeg', type: 'image', alt: 'Growing Forward' },
+    ],
   },
 ]
 
