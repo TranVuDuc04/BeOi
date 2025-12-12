@@ -7,34 +7,56 @@ const GrandOpening = () => {
   const collaborationVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    const handleVideoPlay = (video: HTMLVideoElement | null) => {
+      if (!video) return
+      
+      // Start muted for autoplay to work
+      video.muted = true
+      const playPromise = video.play()
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Try to unmute after video starts playing
+            // Some browsers allow this after user interaction
+            setTimeout(() => {
+              video.muted = false
+            }, 1000)
+          })
+          .catch(() => {
+            // If play fails, keep muted and try again
+            video.muted = true
+            video.play().catch(() => {
+              // Autoplay was prevented
+            })
+          })
+      }
+    }
+
     const firstLookObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            firstLookVideoRef.current?.play().catch(() => {
-              // Autoplay was prevented, user interaction required
-            })
+            handleVideoPlay(firstLookVideoRef.current)
           } else {
             firstLookVideoRef.current?.pause()
           }
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     )
 
     const collaborationObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            collaborationVideoRef.current?.play().catch(() => {
-              // Autoplay was prevented, user interaction required
-            })
+            handleVideoPlay(collaborationVideoRef.current)
           } else {
             collaborationVideoRef.current?.pause()
           }
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     )
 
     const firstLookVideo = firstLookVideoRef.current
