@@ -1,18 +1,15 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 const GrandOpening = () => {
   const firstLookVideoRef = useRef<HTMLVideoElement>(null)
   const collaborationVideoRef = useRef<HTMLVideoElement>(null)
-  const [isFirstLookVisible, setIsFirstLookVisible] = useState(false)
-  const [isCollaborationVisible, setIsCollaborationVisible] = useState(false)
 
   useEffect(() => {
     const firstLookObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsFirstLookVisible(entry.isIntersecting)
           if (entry.isIntersecting) {
             firstLookVideoRef.current?.play().catch(() => {
               // Autoplay was prevented, user interaction required
@@ -28,7 +25,6 @@ const GrandOpening = () => {
     const collaborationObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsCollaborationVisible(entry.isIntersecting)
           if (entry.isIntersecting) {
             collaborationVideoRef.current?.play().catch(() => {
               // Autoplay was prevented, user interaction required
