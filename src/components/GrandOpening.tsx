@@ -7,6 +7,11 @@ const GrandOpening = () => {
   const collaborationVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    // Preload first video immediately for faster loading
+    if (firstLookVideoRef.current) {
+      firstLookVideoRef.current.load()
+    }
+
     const handleVideoPlay = (video: HTMLVideoElement | null) => {
       if (!video) return
       
@@ -115,6 +120,8 @@ const GrandOpening = () => {
             src="/grand-opening/firstlook.mp4"
             loop
             playsInline
+            preload="auto"
+            poster="/grand-opening/1.jpeg"
             className="w-full h-full object-cover absolute inset-0"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
@@ -183,6 +190,8 @@ const GrandOpening = () => {
             src="/grand-opening/202512130012.mp4"
             loop
             playsInline
+            preload="metadata"
+            poster="/grand-opening/1.jpeg"
             className="w-full h-full object-cover absolute inset-0"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
