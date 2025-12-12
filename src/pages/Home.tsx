@@ -4,6 +4,7 @@ import OrderApp from '../components/OrderApp'
 import LocationsCTA from '../components/LocationsCTA'
 import OrderMarquee from '../components/OrderMarquee'
 import JourneySection from '../components/JourneySection'
+import GrandOpening from '../components/GrandOpening'
 
 interface HomeProps {
   onAddToCart: () => void
@@ -13,6 +14,7 @@ interface HomeProps {
 const Home = ({ onAddToCart, onLocationsClick }: HomeProps) => {
   return (
     <>
+      <GrandOpening />
       <Hero />
       <JourneySection />
       <Products onAddToCart={onAddToCart} />
