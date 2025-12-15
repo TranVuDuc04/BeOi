@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
 import SearchModal from './components/SearchModal'
 import LocationsModal from './components/LocationsModal'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ProductsPage from './pages/ProductsPage'
@@ -22,6 +23,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
+        <ScrollToTop />
         <Header
           onCartClick={() => setIsCartOpen(true)}
           onSearchClick={() => setIsSearchOpen(true)}

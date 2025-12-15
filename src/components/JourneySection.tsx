@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-const journeyImage =
-  'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1600&q=80'
-
 const JourneySection = () => {
   return (
     <section className="py-12 md:py-20 container mx-auto px-4">
@@ -16,7 +13,7 @@ const JourneySection = () => {
           className="relative"
         >
           <img
-            src={journeyImage}
+            src="/homepage/2.jpeg"
             alt="The journey behind our coffee shop"
             className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-2xl md:rounded-[32px] shadow-lg"
           />

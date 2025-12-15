@@ -80,7 +80,7 @@ const About = () => {
             className="bg-white border border-brand-gray/30 rounded-2xl shadow-xl overflow-hidden"
           >
             <img
-              src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80"
+              src="/aboutus-page/1.jpeg"
               alt="Interior of BéƠi cafe in Mount Waverley"
               className="aspect-[4/3] w-full object-cover"
             />

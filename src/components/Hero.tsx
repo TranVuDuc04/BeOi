@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion'
 
-const heroImage =
-  'https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&w=1600&q=80'
-
 const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-brand-soft/20 to-white">
@@ -52,7 +49,7 @@ const Hero = () => {
             className="relative max-w-lg lg:max-w-none mx-auto lg:mx-0"
           >
             <img
-              src={heroImage}
+              src="/homepage/1.jpeg"
               alt="Barista pouring latte art at BéƠi"
               className="w-full h-[420px] sm:h-[480px] lg:h-[500px] object-cover rounded-[32px] shadow-2xl"
             />
